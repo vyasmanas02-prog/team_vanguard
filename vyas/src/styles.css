@@ -1,0 +1,104 @@
+:root {
+	--bg: #f2f6f4;
+	--card: #fff;
+	--ink: #1d2d32;
+	--muted: #66767b;
+	--brand: #167d76;
+	--brand-dark: #105e59;
+	--accent: #d87542;
+	--good: #28714f;
+	--bad: #b74743;
+	--line: #dbe5e1;
+}
+* { box-sizing: border-box; }
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+	font-family: "Aptos", "Segoe UI", sans-serif;
+	background: linear-gradient(180deg, #f8fbf9 0%, var(--bg) 100%);
+	color: var(--ink);
+}
+h1, h2, h3 { margin: .4em 0; color: var(--ink); }
+h1 { font-size: 32px; }
+h2 { font-size: 24px; }
+h3 { font-size: 18px; }
+.app, .login { width: min(100% - 32px, 1240px); margin: 0 auto; padding: 20px 0 36px; }
+header {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 14px;
+	flex-wrap: wrap;
+	background: var(--card);
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(29, 45, 50, .045);
+}
+header > b { font-size: 19px; white-space: nowrap; }
+nav { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0 18px; padding: 5px; border-bottom: 1px solid var(--line); }
+button {
+	background: var(--brand);
+	color: #fff;
+	border: 1px solid var(--brand);
+	padding: 8px 14px;
+	border-radius: 6px;
+	cursor: pointer;
+	font: inherit;
+	font-size: 14px;
+	transition: background-color .15s ease, border-color .15s ease, transform .15s ease;
+}
+button:hover:not(:disabled) { background: var(--brand-dark); border-color: var(--brand-dark); }
+button:active:not(:disabled) { transform: translateY(1px); }
+button.ghost { background: transparent; color: var(--brand); }
+button.ghost:hover:not(:disabled) { background: #e9f3f0; color: var(--brand-dark); }
+button.active { background: var(--ink); border-color: var(--ink); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+input, select, textarea {
+	padding: 9px 11px;
+	border: 1px solid var(--line);
+	border-radius: 6px;
+	font: inherit;
+	font-size: 14px;
+	min-width: 0;
+	background: #fff;
+	color: var(--ink);
+}
+input:focus, select:focus, textarea:focus { outline: 3px solid rgba(22, 125, 118, .16); border-color: var(--brand); }
+input.num { width: 64px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 16px; margin: 12px 0; box-shadow: 0 3px 12px rgba(29, 45, 50, .035); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.grid .card { margin: 0; }
+.row { display: flex; gap: 8px; align-items: center; }
+.wrap { flex-wrap: wrap; }
+.muted { color: var(--muted); font-size: 14px; }
+.big { font-size: 26px; font-weight: 700; margin: 6px 0; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); font-size: 14px; white-space: nowrap; }
+th { background: #eaf1ee; color: #35494e; font-weight: 650; }
+tbody tr:hover { background: #f7faf8; }
+.good { color: var(--good); } .bad { color: var(--bad); }
+.warn { background: #fff4e7; border: 1px solid #edc39f; padding: 10px 14px; border-radius: 6px; margin: 10px 0; }
+.badge { padding: 3px 9px; border-radius: 99px; font-size: 12px; background: #edf1ef; }
+.badge.verified { background: #d9eee2; color: var(--good); }
+.badge.pending { background: #fff0ce; }
+.badge.rejected { background: #f9e2df; color: var(--bad); }
+.login { max-width: 520px; padding-top: clamp(36px, 10vh, 96px); }
+.login h1 { margin: 0 0 8px; font-size: 34px; }
+.login h1::before { content: ""; display: inline-block; width: 8px; height: 25px; margin-right: 10px; background: var(--accent); border-radius: 2px; }
+.login > .card { margin-top: 20px; padding: 20px; box-shadow: 0 16px 40px rgba(29, 45, 50, .08); }
+.login form .row { align-items: stretch; }
+.login form input, .login form select { flex: 1 1 150px; }
+.login form button { flex: 0 0 auto; }
+@media (max-width: 720px) {
+	.app, .login { width: min(100% - 24px, 1240px); padding-top: 12px; }
+	header { align-items: stretch; }
+	header > span { flex: 1 1 100%; }
+	nav { flex-wrap: nowrap; overflow-x: auto; }
+	nav button { white-space: nowrap; }
+	.login { padding-top: 8vh; }
+	.login form .row { display: grid; grid-template-columns: 1fr; }
+	.login form input, .login form select { width: 100%; }
+}
